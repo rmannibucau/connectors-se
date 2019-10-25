@@ -39,7 +39,15 @@
             <version>${xbean-finder-shaded.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <!-- test -->
+        <dependency>
+            <groupId>com.oracle.substratevm</groupId>
+            <artifactId>svm</artifactId>
+            <version>19.2.0.1</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>

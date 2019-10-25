@@ -85,6 +85,7 @@ public class JdbcService {
     }
 
     private JdbcConfiguration.Driver getDriver(final JdbcConnection dataStore) {
+        System.out.println(">> " + jdbcConfiguration.get().getDrivers());
         return jdbcConfiguration.get().getDrivers().stream().filter(this::driverNotDisabled)
                 .filter(d -> d.getId()
                         .equals(ofNullable(dataStore.getHandler()).filter(h -> !h.isEmpty()).orElse(dataStore.getDbType())))
