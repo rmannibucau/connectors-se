@@ -78,11 +78,11 @@ public final class MainTableNameInputEmitter {
         final Class<?> clazz = TableNameInputEmitter.class;
         final Class<?>[] servicesTypes = new Class<?>[] { I18nMessage.class, JdbcService.class };
         final Map<String, String> config = new HashMap<>();
-        config.put("configuration.dataSet.connection.jdbcUrl", "jdbc:h2:mem:graal");
+        config.put("configuration.dataSet.connection.jdbcUrl", "jdbc:h2:mem:graal"); // todo: use file
         config.put("configuration.dataSet.connection.userId", "sa");
         config.put("configuration.dataSet.connection.password", "");
         config.put("configuration.dataSet.tableName", "STUDENT");
-        config.put("configuration.dataSet.connection.dbType", "H2");
+        config.put("configuration.dataSet.connection.dbType", "POSTGRESQL");
         config.put("configuration.dataSet.advancedCommon.fetchSize", "0");
 
         // build config

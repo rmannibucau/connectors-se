@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = PRIVATE)
 public final class CreateDB {
 
-    public static void main(final String[] args) throws Exception {
+    public static void main(final String[] args) throws Exception { // todo: adapt to h2
         Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
         try (final Connection connection = DriverManager.getConnection("jdbc:derby:/tmp/db-test/my-db;create=true", "sa", "");
                 final Statement statement = connection.createStatement()) {

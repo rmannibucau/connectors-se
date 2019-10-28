@@ -51,6 +51,7 @@ public class TableNameDataset implements BaseDataSet {
     @Override
     public String getQuery() {
         // No need for the i18n service for this instance
+        System.out.println(">> " + this);
         return "select * from " + get(connection, null).identifier(getTableName());
     }
 }

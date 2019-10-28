@@ -18,13 +18,15 @@ native-image $NATIVIFY_OPTS \
     -H:+AddAllCharsets \
     -H:+ReportExceptionStackTraces \
     -H:+TraceClassInitialization \
-    -H:+PrintClassInitialization \
+    -H:IncludeResourceBundles=org.talend.components.jdbc.service.Messages \
+    --no-server \
     --no-fallback \
     --static \
     --allow-incomplete-classpath \
     --report-unsupported-elements-at-runtime \
     --enable-all-security-services \
-    --initialize-at-run-time=org.h2.Driver \
+    --report-unsupported-elements-at-runtime \
+    --initialize-at-build-time="org.h2.Driver,org.talend.components.jdbc.service.I18nMessage,org.talend.sdk.component.runtime.manager.reflect.ReflectionService\$Messages" \
     $main \
     target/main-table-name-input-emitter.native &&
 

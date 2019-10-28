@@ -54,24 +54,22 @@ public class ComponentReflectionFeature implements Feature {
         // todo: create an AnnotationFinder before the build to scan then configure this feature with graal @Option
         // config (future @Option)
         final boolean enableFinalWrite = false; // java supports final fields to be set, not graal with that toggle on
-        final Class<?>[] services = doLoad(access, Stream.of(
-                "org.talend.components.jdbc.service.JdbcService",
-                "org.talend.components.jdbc.service.I18nMessage"));
-        final Class<?>[] components = doLoad(access, Stream.of(
-                "org.talend.components.jdbc.input.TableNameInputEmitter"));
+        final Class<?>[] services = doLoad(access,
+                Stream.of("org.talend.components.jdbc.service.JdbcService", "org.talend.components.jdbc.service.I18nMessage"));
+        final Class<?>[] components = doLoad(access, Stream.of("org.talend.components.jdbc.input.TableNameInputEmitter"));
         final Class<?>[] configurations = doLoad(access, Stream.of(
                 "org.talend.components.jdbc.configuration.InputTableNameConfig",
-                "org.talend.components.jdbc.dataset.TableNameDataset",
-                "org.talend.components.jdbc.datastore.JdbcConnection",
-                "org.talend.components.jdbc.dataset.AdvancedCommon",
-                "org.talend.components.jdbc.configuration.JdbcConfiguration",
+                "org.talend.components.jdbc.dataset.TableNameDataset", "org.talend.components.jdbc.datastore.JdbcConnection",
+                "org.talend.components.jdbc.dataset.AdvancedCommon", "org.talend.components.jdbc.configuration.JdbcConfiguration",
                 "org.talend.components.jdbc.configuration.JdbcConfiguration$Driver"));
-        final Class<?>[] customRegisteredClasses = doLoad(access, Stream.of(
-                "org.h2.Driver"));
+        /*
+         * final Class<?>[] customRegisteredClasses = doLoad(access, Stream.of(
+         * "org.h2.Driver"));
+         */
 
         // todo: move to reflection.json?
         try {
-            registerInstantiable(customRegisteredClasses);
+            // registerInstantiable(customRegisteredClasses);
             registerApiAnnotations();
             registerConfigurations(configurations, enableFinalWrite);
             registerServices(services);
@@ -82,9 +80,7 @@ public class ComponentReflectionFeature implements Feature {
     }
 
     private Class<?>[] doLoad(final BeforeAnalysisAccess access, final Stream<String> names) {
-        return names
-                .map(name -> requireNonNull(access.findClassByName(name), name))
-                .toArray(Class[]::new);
+        return names.map(name -> requireNonNull(access.findClassByName(name), name)).toArray(Class[]::new);
     }
 
     private void registerApiAnnotations() {

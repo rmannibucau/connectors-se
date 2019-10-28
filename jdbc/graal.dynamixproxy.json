@@ -1,2 +1,4 @@
 [
+  ["org.talend.components.jdbc.service.I18nMessage"],
+  ["org.talend.sdk.component.runtime.manager.reflect.ReflectionService$Messages"]
 ]
